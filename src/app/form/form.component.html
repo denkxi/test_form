@@ -1,0 +1,46 @@
+
+<form [formGroup]="form">
+  <div *ngIf="message.visible" class="message">
+    <app-message [type]="message.type" [text]="message.text" />
+  </div>
+    <div class="input-wrapper">
+      <input type="text" id="name" formControlName="name" placeholder="Name" />
+      <label for="name">Name</label>
+      <div *ngIf="form.controls.name.invalid && form.controls.name.touched">
+        <app-message *ngIf="form.controls.name.errors?.['required']" type="error" text="Field is required"/>
+      </div>
+    </div>
+
+    <div class="input-wrapper">
+      <input type="text" id="surname" formControlName="surname" placeholder="Surname" />
+      <label for="surname">Surname</label>
+      <div *ngIf="form.controls.surname.invalid && form.controls.surname.touched">
+        <app-message *ngIf="form.controls.surname.errors?.['required']" type="error" text="Field is required"/>
+      </div>
+    </div>
+
+    <div class="input-wrapper">
+      <input type="email" id="email" formControlName="email" placeholder="Email" />
+      <label for="email">Email</label>
+      <div *ngIf="form.controls.email.invalid && form.controls.email.touched">
+        <app-message *ngIf="form.controls.email.errors?.['required']" type="error" text="Field is required"/>
+        <app-message *ngIf="form.controls.email.errors?.['email']" type="error" text="Wrong email format"/>
+      </div>
+    </div>
+
+    <div class="input-wrapper">
+      <input type="text" id="experience" formControlName="experience" placeholder="Working experience in months" />
+      <label for="experience">Working experience in months</label>
+      <div *ngIf="form.controls.experience.invalid && form.controls.experience.touched">
+        <app-message *ngIf="form.controls.experience.errors?.['required']" type="error" text="Field is required"/>
+        <app-message *ngIf="form.controls.experience.errors?.['invalidNumber']" type="error" text="Experience needs to be a positive number"/>
+        <app-message *ngIf="form.controls.experience.errors?.['invalidDecimal']" type="error" text="Experience needs to have maximum 1 digit after comma"/>
+      </div>
+    </div>
+
+    <div>
+      <button type="submit" (click)="submitForm()">Submit</button>
+      <button type="button" (click)="fillForm()">Fill</button>
+      <button type="button" (click)="resetForm()">Reset</button>
+    </div>
+  </form>

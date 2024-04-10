@@ -1,0 +1,23 @@
+
+div {
+    border-radius: 10px;
+    /* width: 50%; */
+    width: fit-content;
+    height: fit-content;
+    padding: .5rem 1rem .5rem 1rem;
+    margin-top: .5rem;
+    text-align: center;
+    font-size: 15px;
+}
+
+.success {
+    background-color: #4caf50;
+}
+
+.error {
+    background-color: #e53935;
+}
+
+.info {
+    background-color: #2196f3;
+}
